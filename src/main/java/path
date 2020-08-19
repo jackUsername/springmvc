@@ -1,0 +1,21 @@
+加"/"和不加"/"区别：前段不加，后端一定加
+不加"/":
+1.当在index.jsp文件访问user/some.do时，地址变为：http://localhost:8080/cho6-path/user/some.do
+这是可以访问：http://localhost:8080/cho6-path/+访问地址
+
+解决方案：加入${pageContext.request.contextPath}
+加入一个base标签：是html语言中的标签，表示当前页面的访问地址的基地址
+<base href="http://locathost:8080/ch06_path/">
+
+加"/"：
+2.当在index.jsp文件访问/user/some.do时，地址变为http://localhost:8080/user/some.do
+参考地址是有问题的，解决方案：
+加El表达式：${pageContext.request.contextPath}
+<a href="${pageContext.request.contextPath}/user/some.do">
+
+
+转发和重定向：
+forward:表示转发
+redirect：表示重定向
+forward和redirect都是关键字，有一个共同的特点不和视图解析器一同工作
+
